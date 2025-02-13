@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { NgOptimizedImage } from '@angular/common';
 import {
@@ -23,6 +23,7 @@ export class AppComponent {
   public enter: number = 6;
   public yesCounter: number = 1;
   public noCounter: number = 1;
+  public ArrayOfImages: string[] =  ['assets/garvit-whine.jpg', 'assets/sad-garvit.jpg', 'assets/sundar-garvit.jpg'];
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {
   }
 
@@ -48,7 +49,7 @@ export class AppComponent {
                   width: '375px',
                   data: {
                     msg: "Yayyyy!! Congratulations, aap jeet gye ho mauka is sundar ladke ka valentine ban ne ka. J.K. I am really grateful and luckiest to have you as my valentine",
-                    mood: "happy"
+                    mood: this.ArrayOfImages[2]
                     }
                 });
         }
@@ -67,7 +68,7 @@ export class AppComponent {
           width: '375px',
           data: {
             msg: "Tum nahi maan ne wale na, ruko tum",
-            mood: "angry"
+            mood: this.ArrayOfImages[1]
             }
         });
   }
@@ -79,7 +80,7 @@ export class AppComponent {
           width: '375px',
           data: {
             msg: "Yayyyy!! Congratulations, aap jeet gye ho mauka is sundar ladke ka valentine ban ne ka. J.K. I am really grateful and luckiest to have you as my valentine",
-            mood: "happy"
+            mood: this.ArrayOfImages[2]
             }
         });
   }
@@ -90,7 +91,7 @@ export class AppComponent {
       width: '375px',
       data: {
         msg: "Pehli baari me kaun Yes bolta hai, itni mehnat kri hai, No click kro, jao",
-        mood: "grumpy"
+        mood: this.ArrayOfImages[0]
         }
     });
   }
@@ -112,6 +113,8 @@ export class AppComponent {
   ],
 })
 export class DialogOverviewExampleDialog implements OnInit {
+  @ViewChild('img1') imgComp!: HTMLImageElement;
+
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
   @Inject(MAT_DIALOG_DATA) public data: any,
@@ -126,5 +129,7 @@ export class DialogOverviewExampleDialog implements OnInit {
   ngOnInit() {
   this.msg = this.data.msg;
   this.mood = this.data.mood;
+  this.imgComp.src = this.mood;
+  console.log(this.imgComp)
   }
 }
