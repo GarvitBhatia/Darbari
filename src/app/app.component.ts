@@ -18,13 +18,19 @@ import {MatInputModule} from "@angular/material/input";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Darbari';
-  public enter: number = 6;
+  public enter: number = 0;
   public yesCounter: number = 1;
   public noCounter: number = 1;
   public ArrayOfImages: string[] =  ['assets/garvit-whine.jpg', 'assets/sad-garvit.jpg', 'assets/sundar-garvit.jpg'];
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {
+  }
+
+ngOnInit() {
+  this.enter = 0;
+   this.yesCounter = 1;
+    this.noCounter = 1;
   }
 
   onClick() {
