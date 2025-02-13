@@ -5,3 +5,20 @@
   height: fit-content;
   width: fit-content;
 }
+.shadow-text-tit {
+  font-weight: bold;
+  font-size: 50px;
+  text-shadow: 2px 2px #f00000;
+}
+
+.shadow-text-sm {
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 2px 2px #f00000;
+}
+
+.button-pos {
+position:relative;
+bottom:0;
+margin-bottom: 16px;
+}

@@ -1,6 +1,6 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { NgOptimizedImage } from '@angular/common'
+import { NgOptimizedImage } from '@angular/common';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -20,17 +20,14 @@ import {MatInputModule} from "@angular/material/input";
 })
 export class AppComponent {
   title = 'Darbari';
-  public name: string = '';
-  public enter: boolean = false;
+  public enter: number = 6;
+  public yesCounter: number = 1;
+  public noCounter: number = 1;
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {
   }
 
   onClick() {
-    if (this.name.toUpperCase() === 'MANASVI' || this.name.toUpperCase() === 'DARBARI' || this.name.toUpperCase() === 'MANASVI DARBARI') {
-      this.enter = true;
-    } else {
-      this.openSnackBar();
-    }
+    this.enter++;
   }
 
   openSnackBar() {
@@ -38,13 +35,63 @@ export class AppComponent {
   }
 
   onExit() {
-    this._snackBar.open(`${this.name}, You are not allowed to Exit! you are stuck here forever`, 'Okay');
+    this._snackBar.open(` You are not allowed to Exit! you are stuck here forever`, 'Okay');
+  }
+
+  onYes() {
+    if (this.yesCounter === 1) {
+      this.onMsg();
+    this.yesCounter++;
+      } else {
+        this.dialog.open(DialogOverviewExampleDialog, {
+                  height: '31 0px',
+                  width: '375px',
+                  data: {
+                    msg: "Yayyyy!! Congratulations, aap jeet gye ho mauka is sundar ladke ka valentine ban ne ka. J.K. I am really grateful and luckiest to have you as my valentine",
+                    mood: "happy"
+                    }
+                });
+        }
+  }
+
+  onNo() {
+    this.noCounter++;
+    this.yesCounter = 2;
+  }
+
+  onNoFinal() {
+    this.noCounter++;
+    this.yesCounter = -1;
+    this.dialog.open(DialogOverviewExampleDialog, {
+          height: '31 0px',
+          width: '375px',
+          data: {
+            msg: "Tum nahi maan ne wale na, ruko tum",
+            mood: "angry"
+            }
+        });
+  }
+
+  onYesFinal() {
+    this.yesCounter = -1;
+    this.dialog.open(DialogOverviewExampleDialog, {
+          height: '31 0px',
+          width: '375px',
+          data: {
+            msg: "Yayyyy!! Congratulations, aap jeet gye ho mauka is sundar ladke ka valentine ban ne ka. J.K. I am really grateful and luckiest to have you as my valentine",
+            mood: "happy"
+            }
+        });
   }
 
   onMsg() {
     this.dialog.open(DialogOverviewExampleDialog, {
-      height: '310px',
-      width: '375px'
+      height: '31 0px',
+      width: '375px',
+      data: {
+        msg: "Pehli baari me kaun Yes bolta hai, itni mehnat kri hai, No click kro, jao",
+        mood: "grumpy"
+        }
     });
   }
 }
@@ -64,13 +111,20 @@ export class AppComponent {
     MatDialogClose,
   ],
 })
-export class DialogOverviewExampleDialog {
+export class DialogOverviewExampleDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
   @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
+  msg: string = "";
+  mood: string = "";
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  ngOnInit() {
+  this.msg = this.data.msg;
+  this.mood = this.data.mood;
   }
 }

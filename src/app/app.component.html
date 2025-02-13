@@ -1,33 +1,106 @@
-<div class="row d-flex justify-content-center" style="margin-left: 16px; color: white" *ngIf="!enter">
+<div class="row d-flex justify-content-center" style="margin-left: 16px;" *ngIf="enter === 0">
   <div class="row">
-    <h1 class="col-md-5" style="margin-top: 16px">Hello! Please enter your name to continue:</h1>
+    <h1 class="shadow-text-tit" style="margin-top: 16px;">Hello, Miss Manasvi</h1>
   </div>
   <div class="row align-items-center">
-    <mat-form-field class="col-md-3" style="margin-top: 8px">
-      <mat-label>Name</mat-label>
-      <input matInput [(ngModel)]="name">
-    </mat-form-field>
-    <button mat-raised-button color="primary" class="col-md-1" (click)="onClick()">Enter</button>
+    <button mat-raised-button color="primary" class="col-md-1 button-pos" (click)="onClick()">Proceed <mat-icon>arrow_forward_ios</mat-icon></button>
   </div>
 </div>
-<div class="row d-flex justify-content-center" style="margin-left: 16px; color: white" *ngIf="enter">
+<div class="row d-flex justify-content-center" style="margin-left: 8px;" *ngIf="enter === 1">
   <div class="row">
-    <h1 class="col-md-5" style="margin-top: 16px">Welcome to Bhatia's heart</h1>
-  </div>
-  <div class="row">
-    <h1 class="col-md-4" style="margin-top: 8px">{{name}}, you are the only one here<mat-icon style="color: #D2042D">favorite</mat-icon></h1>
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">So like, this week started with</h1>
   </div>
   <div class="row align-items-baseline">
     <div class="row">
-      <img ngSrc="assets/1.jpg" [width]="207" [height]="368" class="col-md-2">
-      <img ngSrc="assets/2.jpg" [width]="207" [height]="368" class="col-md-2">
-      <img ngSrc="assets/3.jpg" [width]="207" [height]="368" class="col-md-2">
-      <img ngSrc="assets/4.jpg" [width]="207" [height]="368" class="col-md-2">
-      <div class="col-md-2">
-        <button mat-raised-button color="primary" class="row" (click)="onExit()">Exit</button>
-        <button mat-raised-button color="primary" class="row" (click)="onMsg()" style="margin-top: 16px" [matBadge]="1" [matBadgeColor]="'warn'">You have a message</button>
-      </div>
-
+      <img ngSrc="assets/rose_by_garvit.jpg" [width]="225" [height]="442" class="col-md-2">
+      <img ngSrc="assets/rose_by_manasvi.jpg" [width]="225" [height]="225" class="col-md-2">
     </div>
+  </div>
+  <div class="row align-items-center">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">Ab to ye rose-rose ki baat ho gyi hai</h1>
+    <button mat-raised-button color="primary" class="col-md-1 button-pos" (click)="onClick()">Proceed <mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+</div>
+<div class="row d-flex justify-content-center" style="margin-left: 8px;" *ngIf="enter === 2">
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">but ik you are like</h1>
+  </div>
+  <div class="row align-items-baseline">
+    <div class="row">
+      <img ngSrc="assets/choco-garvit.jpg" [width]="220" [height]="375" class="col-md-2">
+      <img ngSrc="assets/choco-manasvi.jpg" [width]="220" [height]="375" class="col-md-2">
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">darLINg DO se mera kya hoga</h1>
+    <button mat-raised-button color="primary" class="col-md-1 button-pos" (click)="onClick()">Proceed <mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+</div>
+<div class="row d-flex justify-content-center" style="margin-left: 8px;" *ngIf="enter === 3">
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">lekin you are PANDAstic</h1>
+  </div>
+  <div class="row align-items-baseline">
+    <div class="row">
+      <img ngSrc="assets/panda.jpg" [width]="220" [height]="320" class="col-md-2">
+      <img ngSrc="assets/unicorn.jpg" [width]="220" [height]="320" class="col-md-2">
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">and tum UNIQUE ho</h1>
+    <button mat-raised-button color="primary" class="col-md-1 button-pos" (click)="onClick()">Proceed <mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+</div>
+<div class="row d-flex justify-content-center" style="margin-left: 8px;" *ngIf="enter === 4">
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">but then I was dumb and made you go like</h1>
+  </div>
+  <div class="row align-items-baseline">
+    <div class="row">
+      <img ngSrc="assets/angry.jpg" [width]="220" [height]="350" class="col-md-2">
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">and that's how the week was topped up with a fight</h1>
+    <button mat-raised-button color="primary" class="col-md-1 button-pos" (click)="onClick()">Proceed <mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+</div>
+<div class="row d-flex justify-content-center" style="margin-left: 8px;" *ngIf="enter === 5">
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">but I am not an idiot, so I made up for it and we were back to being like</h1>
+  </div>
+  <div class="row align-items-baseline">
+    <div class="row">
+      <img ngSrc="assets/us.jpg" [width]="220" [height]="350" class="col-md-2">
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <button mat-raised-button color="primary" class="col-md-1 button-pos" (click)="onClick()">Proceed <mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+</div>
+<div class="row d-flex justify-content-center" style="margin-left: 8px;" *ngIf="enter === 6">
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">And now, to my star with the brightest shine</h1>
+  </div>
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">with the wish to always call you mine</h1>
+  </div>
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">for a lifetime opportunity to wine and dine</h1>
+  </div>
+  <div class="row">
+    <h1 class="shadow-text-sm" style="margin-top: 8px;">Doctor Manasvi, will you be my valentine?</h1>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-5">
+      <button mat-raised-button color="primary" class="col-md-2 button-pos" (click)="onYes()">Yes <mat-icon>check</mat-icon></button>
+      <button mat-raised-button color="primary" class="col-md-2 button-pos" style="margin-left: 8px;" (click)="onNo()" *ngIf="noCounter === 1">No <mat-icon>close</mat-icon></button>
+      <button mat-raised-button color="primary" class="col-md-2 button-pos" style="margin-left: 8px;" (click)="onNoFinal()" *ngIf="noCounter === 4">No <mat-icon>close</mat-icon></button>
+      <button mat-raised-button color="primary" class="col-md-3 button-pos" style="margin-left: 8px;" (click)="onYesFinal()" *ngIf="yesCounter === -1">Definitely Yes <mat-icon>check</mat-icon></button>
+    </div>
+    <button mat-raised-button color="primary" class="col-md-2 button-pos" style="margin-left: 8px;" (click)="onNo()" *ngIf="noCounter === 2">No <mat-icon>close</mat-icon></button>
+  </div>
+  <div class="row">
+    <button mat-raised-button color="primary" class="col-md-2 button-pos" style="margin-left: 8px;" (click)="onNo()" *ngIf="noCounter === 3">No <mat-icon>close</mat-icon></button>
   </div>
 </div>

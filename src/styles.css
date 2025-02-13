@@ -5,5 +5,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 body {
-  background: rgb(248, 131, 121);
+  background-image:url('assets/new-bg.jpg');
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
 }
